@@ -41,6 +41,23 @@ def calculator(num1, operation, num2):
     else:
         return f"unknown operation! {operation}"
 
+@app.route("/temp/<num3>/<operation2>")
+def temp(num3, operation2):
+    num3 = float(num3)
+    operations2 = {
+        "F" : (num3 - 32) * (5/9),
+        "C" : (num3 * (9/5)) + 32
+    }
+    if operation2 in operations2:
+        result = operations2[operation2]
+        if operation2 == "F":
+            return f"{num3} {operation2} = {result} C"
+        elif operation2 == "C":
+            return f"{num3} {operation2} = {result} F"
+
+
+
+
 if __name__ == '__main__':
     app.run(debug=True)
 
